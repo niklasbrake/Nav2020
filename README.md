@@ -6,7 +6,7 @@ In this repository is the code associated with the following paper:
 There are four sections to this repository:
 * **Modelling**. This contains the functions used to fit the parameters of a Markov model of a voltage-gated ion channel to electrophysiology data.
 * **Data Processing**. This contains the functions used to extract data from the .abf files produced from the pClamp software. These functions extract relevant features for fitting.
-* **GUI**. This is a user interface that I used for facilitating structural changes to the Markov model. With it, you can draw states and connections between states, specify the functions dictating the rate constants, and automoatically generates an \*.m file that encodes the system of ODEs described by the model.
+* **GUI**. This is a user interface that I used for facilitating structural changes to the Markov model. With it, you can draw states and connections between states, specify the functions dictating the rate constants, and automatically generates an \*.m file that encodes the system of ODEs described by the model.
 * **Figures**. These are the functions that were used to generate the figures from the paper.
 
 ## Acknowledgements
