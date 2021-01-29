@@ -1,7 +1,7 @@
 ## What is this?
 In this repository is the code associated with the following paper: 
 
-**Brake N, Mancino M, Yan Y, Shimomura S, Kubo Y, Bowie D, and Khadra A (2020). "Relative domain kinetics determine effects of charge   neutralization in voltage-gated sodium channel."** *****Unpublished.*****
+**Brake N, Mancino M, Yan Y, Shimomura S, Kubo Y, Bowie D, and Khadra A (2020). "Intrinsic Gating Behavior of Voltage-Gated Sodium Channels Predetermines Regulation by Auxiliary β-subunits."** *****Submitted.*****
 
 There are four sections to this repository:
 * **Modelling**. This contains the functions used to fit the parameters of a Markov model of a voltage-gated ion channel to electrophysiology data.
