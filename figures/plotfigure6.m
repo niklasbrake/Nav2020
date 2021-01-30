@@ -1,9 +1,9 @@
 function plotfigure6
 
 basePath = fileparts(fileparts(mfilename('fullpath')));
-dataPath = fullfile(basePath,'figures\dependencies\data');
+dataPath = fullfile(basePath,'figures','dependencies','data');
 addpath(fullfile(basePath,'data_processing'));
-addpath(fullfile(basePath,'figures\dependencies\functions'));
+addpath(fullfile(basePath,'figures','dependencies','functions'));
 
 
 fig = figure('color','w','units','centimeters');
@@ -25,9 +25,9 @@ function plotdata(dataPath)
 	figPos = get(gcf,'position');
 	fy =figPos(4);
 
-	Nav15 = load(fullfile(dataPath,'Nav1.5e\GV_Curves.mat'));
-	Nav14 = load(fullfile(dataPath,'Nav1.4\GV_Curves.mat'));
-	Nav16 = load(fullfile(dataPath,'Nav1.6\GV_Curves.mat'));
+	Nav15 = load(fullfile(dataPath,'Nav1.5e','GV_Curves.mat'));
+	Nav14 = load(fullfile(dataPath,'Nav1.4','GV_Curves.mat'));
+	Nav16 = load(fullfile(dataPath,'Nav1.6','GV_Curves.mat'));
 
 
 	clrs(1,:) = [0,0,0];
@@ -130,7 +130,7 @@ function plotdata(dataPath)
 
 
 
-	a14 = load(fullfile(dataPath,'Nav1.4\20181205c3\activation.mat'));
+	a14 = load(fullfile(dataPath,'Nav1.4','20181205c3','activation.mat'));
 	ax(1) = axes('units','centimeters'); hold on;
 	ax(1).Position = [0.7,0.25+fy-1.8,1.4,1.75];
 		axis off;
@@ -148,7 +148,7 @@ function plotdata(dataPath)
 		line([300,300],[-0.9,-0.9+fr]*mX,'LineWidth',1,'color',clrs(1,:));
 		text(340,mX*(-0.9+fr/2),['2 nA'],'FontSize',6,'HorizontalAlignment','left');
 
-	a14 = load(fullfile(dataPath,'Nav1.4\20181205c3\inactivation.mat'));
+	a14 = load(fullfile(dataPath,'Nav1.4','20181205c3','inactivation.mat'));
 	ax(1) = axes('units','centimeters'); hold on;
 	ax(1).Position = [5,0.25+fy-1.8,1.4,1.75];
 		axis off;
@@ -161,7 +161,7 @@ function plotdata(dataPath)
 		line([300,300],[-0.9,-0.9+fr]*mX,'LineWidth',1,'color',clrs(1,:));
 		text(340,mX*(-0.9+fr/2),['2 nA'],'FontSize',6,'HorizontalAlignment','left');
 		
-	a16 = load(fullfile(dataPath,'Nav1.6\20170419c4\activation.mat'));
+	a16 = load(fullfile(dataPath,'Nav1.6','20170419c4','activation.mat'));
 	ax(1) = axes('units','centimeters'); hold on;
 	ax(1).Position = [2.5,0.25+fy-1.8,1.4,1.75];
 		axis off;
@@ -182,7 +182,7 @@ function plotdata(dataPath)
 		text(400,-0.9*mX,['2 ms'],'FontSize',6,'HorizontalAlignment','center',...
 				'VerticalAlignment','top');
 
-	a16 = load(fullfile(dataPath,'Nav1.6\20170419c4\inactivation.mat'));
+	a16 = load(fullfile(dataPath,'Nav1.6','20170419c4','inactivation.mat'));
 	ax(1) = axes('units','centimeters'); hold on;
 	ax(1).Position = [6.8,0.25+fy-1.8,1.4,1.75];
 		axis off;
@@ -198,7 +198,7 @@ function plotdata(dataPath)
 				'VerticalAlignment','top');
 
 function plotWTCSI(dataPath)
-	Folder = fullfile(dataPath,'Nav1.5e\20170418c3');
+	Folder = fullfile(dataPath,'Nav1.5e','20170418c3');
 
 	load(fullfile(Folder,'activation.mat')); % Load inactivation data
 	V = mean(Voltage(:,Epochs(4):Epochs(4)+500)');
@@ -290,9 +290,9 @@ function plotcsidata(dataPath)
 	clrs(2,:) = [1,0,0];
 	clrs(3,:) = [0,0.3,1];
 
-	Nav14 = load(fullfile(dataPath,'Nav1.4\CSI.mat'));
-	Nav15 = load(fullfile(dataPath,'Nav1.5e\CSI.mat'));
-	Nav16 = load(fullfile(dataPath,'Nav1.6\CSI.mat'));
+	Nav14 = load(fullfile(dataPath,'Nav1.4','CSI.mat'));
+	Nav15 = load(fullfile(dataPath,'Nav1.5e','CSI.mat'));
+	Nav16 = load(fullfile(dataPath,'Nav1.6','CSI.mat'));
 
 	ax = axes('units','centimeters'); hold on;
 	ax.Position = [4.8,4.6,3.4,2.7];

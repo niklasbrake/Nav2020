@@ -1,9 +1,9 @@
 function plotfigureS2
 
 	basePath = fileparts(fileparts(mfilename('fullpath')));
-	dataPath = fullfile(basePath,'figures\dependencies\data');
+	dataPath = fullfile(basePath,'figures','dependencies','data');
 	addpath(fullfile(basePath,'data_processing'));
-	addpath(fullfile(basePath,'figures\dependencies\functions'));
+	addpath(fullfile(basePath,'figures','dependencies','functions'));
 
 	load(fullfile(dataPath,'fittingTemplate.mat'));
 	load(fullfile(dataPath,'Nav15ParsNB.mat'));
@@ -88,13 +88,10 @@ function plotfigureS2
 		I_R = max(recovEst)/max(max(recovEst));
 
 
-
-	WT.A = load(fullfile(dataPath,'Nav1.5e\20170418c2\activation.mat'));
-	WT.I = load(fullfile(dataPath,'Nav1.5e\20170418c3\inactivation.mat'));
-	WT.R = load(fullfile(dataPath,'Nav1.5e\20170418c2\recovery1ms.mat'));
-	WT.R2 = load(fullfile(dataPath,'Nav1.5e\20170418c2\recovery10ms.mat'));
-
-	% close all;
+	WT.A = load(fullfile(dataPath,'Nav1.5e','20170418c2','activation.mat'));
+	WT.I = load(fullfile(dataPath,'Nav1.5e','20170418c3','inactivation.mat'));
+	WT.R = load(fullfile(dataPath,'Nav1.5e','20170418c2','recovery1ms.mat'));
+	WT.R2 = load(fullfile(dataPath,'Nav1.5e','20170418c2','recovery10ms.mat'));
 
 	fig = figure('Position',[950.2000  229.0000  560.0000  420.0000],'color','w');
 	fig.Units = 'centimeters';
@@ -128,7 +125,6 @@ function plotfigureS2
 	for i = 1:size(X,2)
 		X(1:101+i*10*10+45,i) = nan;
 	end
-	% X = X(102:end,:);
 	pre = mean(WT.R.Current(:,WT.R.Epochs(4)+1:WT.R.Epochs(4)+500));
 	mX = max(abs(pre));
 	plot((1:500)-300,pre/mX,'k'); hold on;
@@ -138,10 +134,8 @@ function plotfigureS2
 	for i = 1:size(X,2)
 		X(1:101+i*100*10+45,i) = nan;
 	end
-	% plot(X./mX,'k'); hold on;
 	xlim([-300,30e2]);
 	ylim([-1,0]);
-	% plot(pre); xlim([0,3000]);
 	set(get(gca,'xaxis'),'visible','off'); set(get(gca,'yaxis'),'visible','off');
 
 	axes('Position',[0.03,0.48,0.3,0.23]);
@@ -171,16 +165,12 @@ function plotfigureS2
 	h = plot(template.Activation.Voltages,FTA.Gmx*I_A./(template.Activation.Voltages-FTA.ERev)','Marker','square','Color','b','LineWidth',1); drawnow; 
 	set(h.NodeChildren(1),'LineWidth',0.75);
 	xlim([-130 30]); ylim([0,1]);
-	% set(get(gca,'xaxis'),'visible','off'); set(get(gca,'yaxis'),'visible','off');
 
-
-	% errorbar(template.IV,-template.Inactivation.m,template.Inactivation.s,'Color','k','Marker','v','MarkerFaceColor','k','LineWidth',0.75,'LineStyle','none'); hold on;
 	errorbar(Nav15e.inactivation(:,1),Nav15e.inactivation(:,2),Nav15e.inactivation(:,3),'Color','k','Marker','v','MarkerFaceColor','k','LineWidth',0.75,'LineStyle','none'); hold on;
 	FTI = FitBoltzman2(template.Inactivation.Voltages,-I_I',-60,10,1);
 	h1 = plot(template.Inactivation.Voltages,abs(I_I),'Marker','v','Color','b','LineWidth',1); drawnow; 
 	set(h1.NodeChildren(1),'LineWidth',0.75);
 	xlim([-130 30]); ylim([0,1]);
-	% set(get(gca,'xaxis'),'visible','off'); set(get(gca,'yaxis'),'visible','off');
 	xlabel('Voltage(mV)'); set(gca,'FontSize',7); set(gca,'LineWidth',1);
 	box off; set(gca,'TickDir','out');
 
@@ -192,7 +182,6 @@ function plotfigureS2
 	hold on;
 	h1 = plot(T_Steps,I_R,'Marker','v','Color','b'); drawnow;
 	set(gca,'XScale','log');xlim([1 150]);ylim([0,1]);
-	% set(get(gca,'xaxis'),'visible','off'); set(get(gca,'yaxis'),'visible','off');
 	xlabel('Inter-pulse interval (ms)'); set(gca,'FontSize',7); set(gca,'LineWidth',1);
 	box off; set(gca,'TickDir','out');
 	set(gca,'xtick',[1,10,100]);

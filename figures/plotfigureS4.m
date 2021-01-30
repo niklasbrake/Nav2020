@@ -1,9 +1,9 @@
 function plotfigureS4
 
 	basePath = fileparts(fileparts(mfilename('fullpath')));
-	dataPath = fullfile(basePath,'figures\dependencies\data');
+	dataPath = fullfile(basePath,'figures','dependencies','data');
 	addpath(fullfile(basePath,'data_processing'));
-	addpath(fullfile(basePath,'figures\dependencies\functions'));
+	addpath(fullfile(basePath,'figures','dependencies','functions'));
 
 	fig=figure('color','w','units','centimeters');
 	fig.Position(3)=8.5;

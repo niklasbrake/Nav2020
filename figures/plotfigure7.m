@@ -1,20 +1,20 @@
 function plotfigure7
 
 	basePath = fileparts(fileparts(mfilename('fullpath')));
-	dataPath = fullfile(basePath,'figures\dependencies\data');
+	dataPath = fullfile(basePath,'figures','dependencies','data');
 	addpath(fullfile(basePath,'data_processing'));
-	addpath(fullfile(basePath,'figures\dependencies\functions'));
+	addpath(fullfile(basePath,'figures','dependencies','functions'));
 
 	fig = figure('color','w','units','centimeters');
 	fig.Position(3) = 8.5; fig.Position(4) = 12.75;
 	fig.Position(2) = 3;
 
-	WT = load(fullfile(dataPath,'Nav1.5e\GV_Curves.mat'));
-	B1 = load(fullfile(dataPath,'Nav1.5e+B1\GV_Curves.mat'));
-	B3 = load(fullfile(dataPath,'Nav1.5e+B3\GV_Curves.mat'));
-	csiWT = load(fullfile(dataPath,'Nav1.5e\CSI.mat'));
-	csiB1 = load(fullfile(dataPath,'Nav1.5e+B1\CSI.mat'));
-	csiB3 = load(fullfile(dataPath,'Nav1.5e+B3\CSI.mat'));
+	WT = load(fullfile(dataPath,'Nav1.5e','GV_Curves.mat'));
+	B1 = load(fullfile(dataPath,'Nav1.5e+B1','GV_Curves.mat'));
+	B3 = load(fullfile(dataPath,'Nav1.5e+B3','GV_Curves.mat'));
+	csiWT = load(fullfile(dataPath,'Nav1.5e','CSI.mat'));
+	csiB1 = load(fullfile(dataPath,'Nav1.5e+B1','CSI.mat'));
+	csiB3 = load(fullfile(dataPath,'Nav1.5e+B3','CSI.mat'));
 	ax=plotbeta(WT,B1,B3,csiWT,csiB1,csiB3,2.45);
 	axes(ax(1)); text(-55,1,'Nav1.5e','FontSize',8)
 	axes(ax(3));
@@ -22,12 +22,12 @@ function plotfigure7
 	line([1,2],[59,59],'color','k'); text(1.5,59.5,'***','FontSize',8,'VerticalAlignment','middle','HorizontalALignment','center')
 	line([1,3],[61.5,61.5],'color','k'); text(2,62,'***','FontSize',8,'VerticalAlignment','middle','HorizontalALignment','center')
 
-	WT = load(fullfile(dataPath,'Nav1.4\GV_Curves.mat'));
-	B1 = load(fullfile(dataPath,'Nav1.4+B1\GV_Curves.mat'));
-	B3 = load(fullfile(dataPath,'Nav1.4+B3\GV_Curves.mat'));
-	csiWT = load(fullfile(dataPath,'Nav1.4\CSI.mat'));
-	csiB1 = load(fullfile(dataPath,'Nav1.4+B1\CSI.mat'));
-	csiB3 = load(fullfile(dataPath,'Nav1.4+B3\CSI.mat'));	
+	WT = load(fullfile(dataPath,'Nav1.4','GV_Curves.mat'));
+	B1 = load(fullfile(dataPath,'Nav1.4+B1','GV_Curves.mat'));
+	B3 = load(fullfile(dataPath,'Nav1.4+B3','GV_Curves.mat'));
+	csiWT = load(fullfile(dataPath,'Nav1.4','CSI.mat'));
+	csiB1 = load(fullfile(dataPath,'Nav1.4+B1','CSI.mat'));
+	csiB3 = load(fullfile(dataPath,'Nav1.4+B3','CSI.mat'));	
 	[ax,T]=plotbeta(WT,B1,B3,csiWT,csiB1,csiB3,5.5);
 	axes(ax(1)); text(-55,1,'Nav1.4','FontSize',8)
 	ax(2).XLim = [-110,-30];
@@ -42,12 +42,12 @@ function plotfigure7
 	line([1,3],[52,52],'color','k'); text(2,52.5,'***','FontSize',8,'VerticalAlignment','middle','HorizontalALignment','center')
 
 
-	WT = load(fullfile(dataPath,'Nav1.6\GV_Curves.mat'));
-	B1 = load(fullfile(dataPath,'Nav1.6+B1\GV_Curves.mat'));
-	B3 = load(fullfile(dataPath,'Nav1.6+B3\GV_Curves.mat'));
-	csiWT = load(fullfile(dataPath,'Nav1.6\CSI.mat'));
-	csiB1 = load(fullfile(dataPath,'Nav1.6+B1\CSI.mat'));
-	csiB3 = load(fullfile(dataPath,'Nav1.6+B3\CSI.mat'));
+	WT = load(fullfile(dataPath,'Nav1.6','GV_Curves.mat'));
+	B1 = load(fullfile(dataPath,'Nav1.6+B1','GV_Curves.mat'));
+	B3 = load(fullfile(dataPath,'Nav1.6+B3','GV_Curves.mat'));
+	csiWT = load(fullfile(dataPath,'Nav1.6','CSI.mat'));
+	csiB1 = load(fullfile(dataPath,'Nav1.6+B1','CSI.mat'));
+	csiB3 = load(fullfile(dataPath,'Nav1.6+B3','CSI.mat'));
 	[ax,T] = plotbeta(WT,B1,B3,csiWT,csiB1,csiB3,8.6);
 	axes(ax(1)); text(-55,1,'Nav1.6','FontSize',8)
 	ax(2).XLim = [-100,-20];

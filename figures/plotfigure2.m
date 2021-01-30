@@ -1,9 +1,9 @@
 function plotfigure2
 
 basePath = fileparts(fileparts(mfilename('fullpath')));
-dataPath = fullfile(basePath,'figures\dependencies\data');
+dataPath = fullfile(basePath,'figures','dependencies','data');
 addpath(fullfile(basePath,'data_processing'));
-addpath(fullfile(basePath,'figures\dependencies\functions'));
+addpath(fullfile(basePath,'figures','dependencies','functions'));
 addpath(fullfile(basePath,'modelling'));
 
 fig = figure('Units','centimeters','color','w');
@@ -130,12 +130,12 @@ function plotdata(dataPath)
 	load(fullfile(dataPath,'ephys_SummaryData.mat'));
 	load(fullfile(dataPath,'TimeToPeak.mat'));
 
-	D1 = load(fullfile(dataPath,'Nav1.5e-D1\20180307c1\activation.mat'));
+	D1 = load(fullfile(dataPath,'Nav1.5e-D1','20180307c1','activation.mat'));
 	D1.Current = activationleakcorrection(D1.Voltage,D1.Current,D1.Epochs); % corrects for the leak current
 	repD1 = D1.Current(:,D1.Epochs(4)-75:D1.Epochs(4)+600);
 	repD1 = repD1./max(abs(repD1),[],2); % Normalize to peak at 1
 
-	WT = load(fullfile(dataPath,'Nav1.5e\20170418c2\activation.mat'));
+	WT = load(fullfile(dataPath,'Nav1.5e','20170418c2','activation.mat'));
 	WT.Current = activationleakcorrection(WT.Voltage,WT.Current,WT.Epochs); % corrects for the leak current
 	repWT = WT.Current(:,WT.Epochs(4)-75:WT.Epochs(4)+600);
 	repWT = repWT./max(abs(repWT),[],2); % Normalize to peak at 1

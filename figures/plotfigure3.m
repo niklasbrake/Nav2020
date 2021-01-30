@@ -1,9 +1,9 @@
 function plotfigure3
 
 basePath = fileparts(fileparts(mfilename('fullpath')));
-dataPath = fullfile(basePath,'figures\dependencies\data');
+dataPath = fullfile(basePath,'figures','dependencies','data');
 addpath(fullfile(basePath,'data_processing'));
-addpath(fullfile(basePath,'figures\dependencies\functions'));
+addpath(fullfile(basePath,'figures','dependencies','functions'));
 
 fig = figure('color','w','units','centimeters');
 fig.Position(2) = fig.Position(2)-5;
@@ -12,11 +12,11 @@ fig.Position(4) = 9.25;
 figh = fig.Position(4);
 
 % Representative Traces 
-WT = load(fullfile(dataPath,'Nav1.5e\20170418c3\inactivation.mat'));
-D1 = load(fullfile(dataPath,'Nav1.5e-D1\20180307c1\inactivation.mat'));
-D2 = load(fullfile(dataPath,'Nav1.5e-D2\20180316c1\inactivation.mat'));
-D3 = load(fullfile(dataPath,'Nav1.5e-D3\20180712c3\inactivation.mat'));
-D4 = load(fullfile(dataPath,'Nav1.5e-D4\20190318c3\inactivation.mat'));
+WT = load(fullfile(dataPath,'Nav1.5e','20170418c3','inactivation.mat'));
+D1 = load(fullfile(dataPath,'Nav1.5e-D1','20180307c1','inactivation.mat'));
+D2 = load(fullfile(dataPath,'Nav1.5e-D2','20180316c1','inactivation.mat'));
+D3 = load(fullfile(dataPath,'Nav1.5e-D3','20180712c3','inactivation.mat'));
+D4 = load(fullfile(dataPath,'Nav1.5e-D4','20190318c3','inactivation.mat'));
 
 clrs = lines(6);
 clrs=clrs([2:4,6],:);

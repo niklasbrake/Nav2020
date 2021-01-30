@@ -2,19 +2,19 @@ function plotfigure4
 
 warning('off','curvefit:prepareFittingData:removingNaNAndInf')
 basePath = fileparts(fileparts(mfilename('fullpath')));
-dataPath = fullfile(basePath,'figures\dependencies\data');
+dataPath = fullfile(basePath,'figures','dependencies','data');
 addpath(fullfile(basePath,'data_processing'));
-addpath(fullfile(basePath,'figures\dependencies\functions'));
+addpath(fullfile(basePath,'figures','dependencies','functions'));
 
-load(fullfile(dataPath,'VCF\VCF_SummaryData.mat'));
+load(fullfile(dataPath,'VCF','VCF_SummaryData.mat'));
 F(:,3) = F(:,3)/mean(F(vF>-50,3));
-D(1) = load(fullfile(dataPath,'VCF\D1_20180510c2.mat'));
+D(1) = load(fullfile(dataPath,'VCF','D1_20180510c2.mat'));
 baseline(1) = 1.8849;
-D(2) = load(fullfile(dataPath,'VCF\D2_20180512c1.mat'));
+D(2) = load(fullfile(dataPath,'VCF','D2_20180512c1.mat'));
 baseline(2) = 1.8307;
-D(3) = load(fullfile(dataPath,'VCF\D3_20180518c4.mat'));
+D(3) = load(fullfile(dataPath,'VCF','D3_20180518c4.mat'));
 baseline(3) = 1.8307;
-D(4) = load(fullfile(dataPath,'VCF\D4_20180514c5.mat'));
+D(4) = load(fullfile(dataPath,'VCF','D4_20180514c5.mat'));
 baseline(4) = 2.0698;
 
 WT = load(fullfile(dataPath,'ephys_SummaryData.mat'));

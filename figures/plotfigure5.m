@@ -1,9 +1,9 @@
 function plotfigure5
 
 	basePath = fileparts(fileparts(mfilename('fullpath')));
-	dataPath = fullfile(basePath,'figures\dependencies\data');
+	dataPath = fullfile(basePath,'figures','dependencies','data');
 	addpath(fullfile(basePath,'data_processing'));
-	addpath(fullfile(basePath,'figures\dependencies\functions'));
+	addpath(fullfile(basePath,'figures','dependencies','functions'));
 
 	fig = figure('color','w','units','centimeters');
 	fig.Position(3)= 8.5;
@@ -162,7 +162,7 @@ function simulateDIVCN(dataPath)
 function plotComparison(params,modelfunction,clr,markerType)
 
 	basePath = fileparts(fileparts(mfilename('fullpath')));
-	dataPath = fullfile(basePath,'figures\dependencies\data');
+	dataPath = fullfile(basePath,'figures','dependencies','data');
 	load(fullfile(dataPath,'fittingTemplate.mat'));
 
 	[Q,OpenPositions] = modelfunction(params);

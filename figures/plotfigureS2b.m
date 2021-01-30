@@ -1,7 +1,7 @@
 function plotfigure2b
 
 basePath = fileparts(fileparts(mfilename('fullpath')));
-dataPath = fullfile(basePath,'figures\dependencies\data');
+dataPath = fullfile(basePath,'figures','dependencies','data');
 load(fullfile(dataPath,'Nav15ParsNB.mat'));
 load(fullfile(dataPath,'ParameterSensitivity(gamma_alpha).mat'));
 

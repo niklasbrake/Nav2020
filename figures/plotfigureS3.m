@@ -1,7 +1,7 @@
 function plotfigureS3
 
 basePath = fileparts(fileparts(mfilename('fullpath')));
-dataPath = fullfile(basePath,'figures\dependencies\data');
+dataPath = fullfile(basePath,'figures','dependencies','data');
 
 pt2cm = 0.0352778;
 
@@ -25,7 +25,7 @@ axh = 1.75;
 
 setPanLab(0.1,fig.Position(4)-0.35,'A');
 ax = axes('units','centimeters','Position',[x1,y1,axw,axh]); hold on;
-WT = load(fullfile(dataPath,'mH1\20170311c3\inactivation.mat'));
+WT = load(fullfile(dataPath,'mH1','20170311c3','inactivation.mat'));
 WT.Current = inactivationleakcorrection(WT.Voltage,WT.Current,WT.Epochs);
 X = WT.Current(:,WT.Epochs(5)+31:WT.Epochs(5)+480)';
 X(1:4,:) = nan;
@@ -45,7 +45,7 @@ text((250+400)/2,-1.02*mX,'1 ms','FontSize',6,'HorizontalAlignment','center');
 
 
 ax = axes('units','centimeters','Position',[x1+axw+0.2,y1,axw,axh]); hold on;
-D1 = load(fullfile(dataPath,'mH1-D1\20180301c6\inactivation.mat'));
+D1 = load(fullfile(dataPath,'mH1-D1','20180301c6','inactivation.mat'));
 D1.Current = inactivationleakcorrection(D1.Voltage,D1.Current,D1.Epochs);
 X = D1.Current(:,D1.Epochs(5)+31:D1.Epochs(5)+30+400)';
 X(1:4,:) = nan;
@@ -63,7 +63,7 @@ text(250,-(0.9-fr/2)*mX,['1 nA'],'FontSize',6,'Rotation',90,'HorizontalAlignment
 
 
 ax=axes('units','centimeters','Position',[x1+2*(axw+0.2),y1,axw,axh]);
-D2 = load(fullfile(dataPath,'mH1-D2\20180711c3\inactivation.mat'));
+D2 = load(fullfile(dataPath,'mH1-D2','20180711c3','inactivation.mat'));
 D2.Current = inactivationleakcorrection(D2.Voltage,D2.Current,D2.Epochs);
 X = D2.Current(:,D2.Epochs(5)+31:D2.Epochs(5)+30+400)';
 mX = max(abs(X(:)));
@@ -80,7 +80,7 @@ line([300,300],[-0.9 -0.9+fr]*mX,'LineWidth',1,'Color','k')
 text(250,-(0.9-fr/2)*mX,['2 nA'],'FontSize',6,'Rotation',90,'HorizontalAlignment','center');
 
 ax = axes('units','centimeters','Position',[x1+3*(axw+0.2),y1,axw,axh]); hold on;
-D3 = load(fullfile(dataPath,'mH1-D3\20180309c12\inactivation.mat'));
+D3 = load(fullfile(dataPath,'mH1-D3','20180309c12','inactivation.mat'));
 D3.Current = inactivationleakcorrection(D3.Voltage,D3.Current,D3.Epochs);
 X = D3.Current(:,D3.Epochs(5):D3.Epochs(5)+430)';
 mX = max(abs(X(:)));
@@ -99,7 +99,7 @@ text(250,-(0.9-fr/2)*mX,['2 nA'],'FontSize',6,'Rotation',90,'HorizontalAlignment
 
 
 ax = axes('units','centimeters','Position',[x1+4*(axw+0.2),y1,axw,axh]); hold on;
-D4 = load(fullfile(dataPath,'mH1-D4\20181022c7\inactivation.mat'));
+D4 = load(fullfile(dataPath,'mH1-D4','20181022c7','inactivation.mat'));
 D4.Current = inactivationleakcorrection(D4.Voltage,D4.Current,D4.Epochs);
 X = D4.Current(:,D4.Epochs(5)+15:D4.Epochs(5)+30+400)';
 mX = max(abs(X(:)));
@@ -128,7 +128,7 @@ xlim([-150,-40]); 	xlabel('Test Pulse Potential (mV)')
 ylim([0,1.1]); 		ylabel('Peak Conductance (Norm.)')
 
 
-load(fullfile(dataPath,'mH1\GV_Curves.mat'));
+load(fullfile(dataPath,'mH1','GV_Curves.mat'));
 G = I_I'.*InactFit(:,2)';
 G(:,max(G)>1.5) = [];
 V = mean(I_V);
@@ -141,7 +141,7 @@ xtemp = V;
 ytemp = FT(xtemp);
 plot(xtemp,ytemp,'Color','k');
 
-load(fullfile(dataPath,'mH1-D1\GV_Curves.mat'));
+load(fullfile(dataPath,'mH1-D1','GV_Curves.mat'));
 G = I_I'.*InactFit(:,2)';
 G(:,max(G)>1.5) = [];
 V = mean(I_V);
@@ -154,7 +154,7 @@ xtemp = V;
 ytemp = FT(xtemp);
 plot(xtemp,ytemp,'Color',clrs(1,:));
 
-load(fullfile(dataPath,'mH1-D2\GV_Curves.mat'));
+load(fullfile(dataPath,'mH1-D2','GV_Curves.mat'));
 G = I_I'.*InactFit(:,2)';
 G(:,max(G)>1.5) = [];
 V = mean(I_V);
@@ -167,7 +167,7 @@ xtemp = V;
 ytemp = FT(xtemp);
 plot(xtemp,ytemp,'Color',clrs(2,:));
 
-load(fullfile(dataPath,'mH1-D3\GV_Curves.mat'));
+load(fullfile(dataPath,'mH1-D3','GV_Curves.mat'));
 G = I_I'.*InactFit(:,2)';
 G(:,max(G)>1.5) = [];
 V = mean(I_V);
@@ -180,7 +180,7 @@ xtemp = V;
 ytemp = FT(xtemp);
 plot(xtemp,ytemp,'Color',clrs(3,:));
 
-load(fullfile(dataPath,'mH1-D4\GV_Curves.mat'));
+load(fullfile(dataPath,'mH1-D4','GV_Curves.mat'));
 G = I_I'.*InactFit(:,2)';
 G(:,max(G)>1.5) = [];
 V = mean(I_V);
