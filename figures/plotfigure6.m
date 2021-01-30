@@ -47,6 +47,7 @@ function plotdata(dataPath)
 		plot(V,G','.','Color',clrs(1,:),'MarkerSize',2);
 		hold on;
 		FT=FitBoltzmanCurve2(V,mean(G),-50,-10);
+		V = linspace(V(1),V(end),1e2);
 		plot(V,FT(V),'color',clrs(1,:),'LineWidth',1);
 
 		V=mean(Nav14.A_V(:,1:30));
@@ -59,6 +60,7 @@ function plotdata(dataPath)
 		plot(V,G','.','Color',clrs(2,:),'MarkerSize',2);
 		hold on;
 		FT=FitBoltzmanCurve2(V,mean(G),-50,-10);
+		V = linspace(V(1),V(end),1e2);
 		plot(V,FT(V),'color',clrs(2,:),'LineWidth',1);
 
 		V=mean(Nav16.A_V(:,1:30));
@@ -72,6 +74,7 @@ function plotdata(dataPath)
 		plot(V,G','.','Color',clrs(3,:),'MarkerSize',2);
 		hold on;
 		FT=FitBoltzmanCurve2(V,mean(G),-50,-10);
+		V = linspace(V(1),V(end),1e2);
 		plot(V,FT(V),'color',clrs(3,:),'LineWidth',1);
 
 		xlim([-60,35])
@@ -98,6 +101,7 @@ function plotdata(dataPath)
 		plot(V,I','.','Color',clrs(1,:),'MarkerSize',2);
 		hold on;
 		FT=FitBoltzmanCurve2(V,mean(I),-50,10);
+		V = linspace(V(1),V(end),1e2);
 		plot(V,FT(V),'color',clrs(1,:),'LineWidth',1);
 
 		V = mean(Nav14.I_V);
@@ -105,6 +109,7 @@ function plotdata(dataPath)
 		Nav14.Iv50 = Nav14.InactFit(:,4);
 		plot(V,I','.','Color',clrs(2,:),'MarkerSize',2);
 		FT=FitBoltzmanCurve2(V,mean(I),-50,10);
+		V = linspace(V(1),V(end),1e2);
 		plot(V,FT(V),'color',clrs(2,:),'LineWidth',1);
 
 		V = mean(Nav16.I_V);
@@ -112,6 +117,7 @@ function plotdata(dataPath)
 		Nav16.Iv50 = Nav16.InactFit(:,4);
 		plot(V,I','.','Color',clrs(3,:),'MarkerSize',2);
 		FT=FitBoltzmanCurve2(V,mean(I),-50,10);
+		V = linspace(V(1),V(end),1e2);
 		plot(V,FT(V),'color',clrs(3,:),'LineWidth',1);
 
 		xlim([-120,-20])
@@ -362,11 +368,11 @@ function plotcsidata(dataPath)
 	ax = axes('Units','centimeters');
 	ax.Position = [4.8,0.85,1.7,2.75];
 		plot(1+(mod(1:length(total15),5)-1.5)/15,total15,'square','color',clrs(1,:), ...
-			'MarkerSize',2,'MarkerFaceColor',clrs(1,:)); hold on;
+			'MarkerSize',1.5,'MarkerFaceColor',clrs(1,:)); hold on;
 		plot(2+(mod(1:length(total14),5)-1.5)/15,total14,'square','color',clrs(2,:), ...
-			'MarkerSize',2,'MarkerFaceColor',clrs(2,:));
+			'MarkerSize',1.5,'MarkerFaceColor',clrs(2,:));
 		plot(3+(mod(1:length(total16),5)-1.5)/15,total16,'square','color',clrs(3,:), ...
-			'MarkerSize',2,'MarkerFaceColor',clrs(3,:));
+			'MarkerSize',1.5,'MarkerFaceColor',clrs(3,:));
 		xticks([1,2,3]);
 		xticklabels({'Nav1.5e','Nav1.4','Nav1.6'});
 		ylim([25,67]);
@@ -378,7 +384,7 @@ function plotcsidata(dataPath)
 		ylabel('Total CSI (mV)');
 		ax = get(gca,'xaxis');
 		
-		% ax.TickLabelRotation = -30;
+		ax.TickLabelRotation = -30;
 		line([1,3],[64,64],'color','k')
 		text(2,65,'***','FontSize',8,'VerticalAlignment','middle','HorizontalALignment','center')
 		line([1,2],[60,60],'color','k')
@@ -386,9 +392,10 @@ function plotcsidata(dataPath)
 		line([2,3],[53,53],'color','k')
 		text(2.5,54,'***','FontSize',8,'VerticalAlignment','middle','HorizontalALignment','center')
 
-		xticklabels({'1.5e','1.4','1.6'});
+		% xticklabels({'1.5e','1.4','1.6'});
+		% xticklabels({'Nav1.5e','Nav1.4','Nav1.6'});
 
-	% return;
+	return;
 	ax = axes('Units','centimeters');
 	ax.Position = [6.6,0.85,1.7,2.75];
 

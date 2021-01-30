@@ -150,8 +150,8 @@ function plotdata(dataPath)
 		axes('position',[0.56+0.15*(i-1),0.75,0.12,0.24],'FontSize',7);
 		hold on;
 		iV = vIdcs(i);
-		plot(T(1:151),repWT(iV,1:151),'.k','MarkerSize',4);	 plot(T(151:600),repWT(iV,151:600),'-k','LineWidth',1);
-		h=plot(T(1:151),repD1(iV,1:151),'.','MarkerSize',4,'color',clrs(1,:)); plot(T(151:600),repD1(iV,151:600),'-','LineWidth',1,'Color',clrs(1,:));
+		plot(T(1:100),repWT(iV,1:100),'.k','MarkerSize',4);	 plot(T(100:600),repWT(iV,100:600),'-k','LineWidth',1);
+		h=plot(T(1:100),repD1(iV,1:100),'.','MarkerSize',4,'color',clrs(1,:)); plot(T(100:600),repD1(iV,100:600),'-','LineWidth',1,'Color',clrs(1,:));
 		xlim([-1,5]);
 		ylim([-1.1,0.2]);
 		text(0.5,0.15,[int2str(V(iV)) ' mV'],'FontWeight','normal','FontSize',7,'HorizontalAlignment','left','VerticalAlignment','middle');

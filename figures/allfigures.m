@@ -2,8 +2,7 @@ function allfigures
 
 warning('off','MATLAB:print:FigureTooLargeForPage');
 figs = string(int2str((1:7)'));
-figs = [figs;"S1";"S2";"S3";"S4";"S5"];
-figs = ["S1","S3"];
+figs = [figs;"S1";"S2";"S3";"S4"];
 for i = 1:length(figs)
 	eval(['plotfigure' figs{i}]);
 	fig = gcf;
