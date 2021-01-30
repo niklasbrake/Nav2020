@@ -78,11 +78,6 @@ function [max_F mean_F FitnessTrack Pidx] = plotGAresult(Q,OpenPositions,WT,temp
 
 
 
-
-
-% close all;
-
-% figure('Position',[950.2000  229.0000  560.0000  420.0000]);
 figure(2);
 axes('Position',[0,2/3,1/3,1/3]);
 V = mean(WT.A.Voltage(:,WT.A.Epochs(4):WT.A.Epochs(4)+500)');
@@ -115,7 +110,6 @@ X = X(102:end,:);
 mX = max(abs(WT.R.Current(:,WT.R.Epochs(4):WT.R.Epochs(4)+500)'));
 plot(X./mX); hold on;
 xlim([0,150e2]);
-% plot(pre); xlim([0,3000]);
 set(get(gca,'xaxis'),'visible','off'); set(get(gca,'yaxis'),'visible','off');
 
 axes('Position',[1/3,2/3,1/3,1/3]);
@@ -134,7 +128,10 @@ xlim([0,150]);
 set(get(gca,'xaxis'),'visible','off'); set(get(gca,'yaxis'),'visible','off');
 
 
-load('AdamoData.mat');
+basePath = fileparts(fileparts(mfilename('fullpath')));
+dataPath = fullfile(basePath,'figures\dependencies\data');
+
+load(fullfile(dataPath,'AdamoData.mat'));
 
 axes('Position',[2/3,2/3,1/3,1/3]);
 errorbar(Nav15e.activation(:,1),Nav15e.activation(:,2),Nav15e.activation(:,3),'Color','k','Marker','square','MarkerFaceColor','k','LineWidth',0.75,'LineStyle','none'); hold on;

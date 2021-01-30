@@ -191,7 +191,7 @@ function params = constructModelCode(EdgeTable,ParameterTable,fileName,filePath,
 		end
 	end
 
-	Str = ['Q = @(v) cellfun(@(f)f(-v),preQ);\n'];
+	Str = ['Q = @(v) cellfun(@(f)f(v),preQ);\n'];
 	fprintf(fid,Str);
 
 	Str = ['OpenPositions = [' strjoin(O,',') ']; \n'];

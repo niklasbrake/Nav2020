@@ -258,8 +258,6 @@ function plotWTCSI(dataPath)
 	scatter(2201,0.1,10,'vk','filled')
 	text(2300,0.11,'-10 mV','HorizontalAlignment','left','VerticalAlignment','middle','FontSize',6)
 
-	% axes('Position',[0,0,0.05,0.05]);
-	% axis off;
 	colormap(CM);
 	C = colorbar('location','south');
 	set(gca,'CLim',[-120,0])
@@ -304,7 +302,6 @@ function plotcsidata(dataPath)
 		hold on;
 		errorbar(Nav15.V,mean(Nav15.OSI),std(Nav15.OSI)/sqrt(size(Nav15.CSI,1)),'LineWidth',0.75,'Color',CM(end,:))
 		errorbar(Nav15.V,mean(Nav15.Inact),std(Nav15.Inact)/sqrt(size(Nav15.CSI,1)),'LineWidth',0.75,'color',CM(1,:));
-		% legend({'CSI','OSI','Inactivation'},'Location','northwest');
 		box off;
 		xlim([-120,0])
 		xticks([-120:60:0]);

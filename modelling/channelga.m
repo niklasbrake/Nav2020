@@ -10,22 +10,20 @@ function [Generation Fitness FitnessTrack]= channelga(pc,pm1,pm2,varargin)
 % 	FitnessTrack is the maximum fitness of every past generation.
 % 
 % 	[Generation Fitness FitnessTrack] = CHANNELGA(pc,pm1,pm2,Name,Value)
-% 	
-% 	For more information, see <a href="matlab:web('https://github.com/niklasbrake/Brake-et-al-2019/wiki')">the reference page</a>.
-% 
+% 	 
 % 	See also getchannelfitness, gendist, constructtemplate, nav15_NB.
 
 
 	ip = inputParser;
 
 	paramName = 'OutputFolder';
-	defaultval = 'E:\Documents\Work\PhD\Nav15\Modelling\Data';
+	defaultval = '.';
 	errorMsg = 'Input must be a valid path.';
 	validationFcn = @(x) assert(exist(x)==7,errorMsg);
 	addParameter(ip,paramName,defaultval,validationFcn);
 
 	paramName = 'TemplateFolder';
-	defaultval = 'E:\Documents\Work\PhD\Nav15\Experiments\Data\Nav1.5e';
+	defaultval = '.';
 	errorMsg = 'Input must be nummeric.';
 	validationFcn = @(x) assert(exist(x)==7,errorMsg);
 	addParameter(ip,paramName,defaultval,validationFcn);

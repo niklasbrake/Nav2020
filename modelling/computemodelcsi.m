@@ -10,7 +10,6 @@ dX_base = Q(-100*1e-3);
 Xinit = temp(end,:)';
 % Activation Initialization
 V = [-120:0];
-% V = [-120:035];
 VSteps = length(V);
 
 % Activation Protocol
@@ -28,9 +27,7 @@ for idx = 1:VSteps
 		runCSI(i,:) = dX(i,i+5)*X2(:,i+5,idx)*dt - dX(i+5,i)*X2(:,i,idx)*dt;
 	end
 	CSI(idx) = sum(runCSI(:));
-	% Inact(idx) = squeeze(sum(X2(end,[1:N/3],idx),2));
 end
-% CSI = Inact-OSI;
 Inact=OSI+CSI;
 
 
