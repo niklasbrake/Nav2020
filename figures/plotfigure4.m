@@ -20,7 +20,8 @@ baseline(4) = 2.0698;
 WT = load(fullfile(dataPath,'ephys_SummaryData.mat'));
 
 fig = figure('Units','Centimeters','Color','w');
-fig.Position(3) = 8.5;
+% fig.Position(3) = 8.5;
+fig.Position(3) = 8.9;
 fig.Position(4) = 15.25;
 fig.Position(2) = fig.Position(2)-4;
 figh = fig.Position(4);
@@ -121,10 +122,10 @@ A=labelpanel(0.015,0.54,'c');
 A=labelpanel(0.015,0.35,'d');
 
 
-A=labelpanel(0.06,0.93,'DI*'); A.FontWeight = 'normal';
-A=labelpanel(0.06,0.735,'DII*'); A.FontWeight = 'normal';
-A=labelpanel(0.06,0.54,'DIII*'); A.FontWeight = 'normal';
-A=labelpanel(0.06,0.35,'DIV*'); A.FontWeight = 'normal';
+A=labelpanel(0.06,0.93,'DI*','Cell'); A.FontWeight = 'normal';
+A=labelpanel(0.06,0.735,'DII*','Cell'); A.FontWeight = 'normal';
+A=labelpanel(0.06,0.54,'DIII*','Cell'); A.FontWeight = 'normal';
+A=labelpanel(0.06,0.35,'DIV*','Cell'); A.FontWeight = 'normal';
 
 
 clrs = lines(6);

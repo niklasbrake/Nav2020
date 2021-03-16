@@ -7,8 +7,10 @@ addpath(fullfile(basePath,'figures','dependencies','functions'));
 addpath(fullfile(basePath,'modelling'));
 
 fig = figure('Units','centimeters','color','w');
-fig.Position(3) = 11.4;
-fig.Position(4) = 8;
+fig.Position(3) = 12;
+fig.Position(4) = 8.5;
+% fig.Position(3) = 11.4;
+% fig.Position(4) = 8;
 
 
 ax = axes('Position',[0.03,0.62,0.45,0.36]);
@@ -133,25 +135,56 @@ function plotdata(dataPath)
 	D1 = load(fullfile(dataPath,'Nav1.5e-D1','20180307c1','activation.mat'));
 	D1.Current = activationleakcorrection(D1.Voltage,D1.Current,D1.Epochs); % corrects for the leak current
 	repD1 = D1.Current(:,D1.Epochs(4)-75:D1.Epochs(4)+600);
-	repD1 = repD1./max(abs(repD1),[],2); % Normalize to peak at 1
+	M = max(abs(repD1(:,100:end)),[],2);
+	repD1 = repD1./M; % Normalize to peak at 1
+	repD1(repD1>0.1) = nan;
+
+	D2 = load(fullfile(dataPath,'Nav1.5e-D2','20180316c1','activation.mat'));
+	D2.Current = activationleakcorrection(D2.Voltage,D2.Current,D2.Epochs); % corrects for the leak current
+	repD2 = D2.Current(:,D2.Epochs(4)-75:D2.Epochs(4)+600);
+	M = max(abs(repD2(:,100:end)),[],2);
+	repD2 = repD2./M; % Normalize to peak at 1
+	repD2(repD2>0.1) = nan;
+
+	D4 = load(fullfile(dataPath,'Nav1.5e-D4','20190318c3','activation.mat'));
+	D4.Current = activationleakcorrection(D4.Voltage,D4.Current,D4.Epochs); % corrects for the leak current
+	repD4 = D4.Current(:,D4.Epochs(4)-75:D4.Epochs(4)+600);
+	M = max(abs(repD4(:,100:end)),[],2);
+	repD4 = repD4./M; % Normalize to peak at 1
+	repD4(repD4>0.1) = nan;
+
 
 	WT = load(fullfile(dataPath,'Nav1.5e','20170418c2','activation.mat'));
 	WT.Current = activationleakcorrection(WT.Voltage,WT.Current,WT.Epochs); % corrects for the leak current
 	repWT = WT.Current(:,WT.Epochs(4)-75:WT.Epochs(4)+600);
 	repWT = repWT./max(abs(repWT),[],2); % Normalize to peak at 1
+	repWT(repWT>0.1) = nan;
+
 
 	clrs = lines(6);
 	clrs=clrs([2:4,6],:);
 
 	V = [-110:5:60];
 	vIdcs = [16:2:20];
+	% vIdcs = [17,17,17];
 	T = ((1:length(repWT))-101)*1e-2;
 	for i = 1:length(vIdcs)
 		axes('position',[0.56+0.15*(i-1),0.75,0.12,0.24],'FontSize',7);
 		hold on;
 		iV = vIdcs(i);
-		plot(T(1:100),repWT(iV,1:100),'.k','MarkerSize',4);	 plot(T(100:600),repWT(iV,100:600),'-k','LineWidth',1);
-		h=plot(T(1:100),repD1(iV,1:100),'.','MarkerSize',4,'color',clrs(1,:)); plot(T(100:600),repD1(iV,100:600),'-','LineWidth',1,'Color',clrs(1,:));
+		cl = clrs(1,:);
+		% if(i==3)
+		% 	repD1(iV,:) = repD4(iV,:);
+		% 	cl = clrs(4,:);
+		% end
+		% if(i==2)
+		% 	repD1(iV,:) = repD2(iV,:);
+		% 	cl = clrs(2,:);
+		% end
+		plot(T(1:120),repWT(iV,1:120),'.k','MarkerSize',4);	 
+		plot(T(120:600),repWT(iV,120:600),'-k','LineWidth',1);
+		h=plot(T(1:140),repD1(iV,1:140),'.','MarkerSize',4,'color',cl); 
+		plot(T(140:600),repD1(iV,140:600),'-','LineWidth',1,'Color',cl);
 		xlim([-1,5]);
 		ylim([-1.1,0.2]);
 		text(0.5,0.15,[int2str(V(iV)) ' mV'],'FontWeight','normal','FontSize',7,'HorizontalAlignment','left','VerticalAlignment','middle');

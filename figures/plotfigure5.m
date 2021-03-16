@@ -7,7 +7,8 @@ function plotfigure5
 	addpath(fullfile(basePath,'figures','dependencies','functions'));
 
 	fig = figure('color','w','units','centimeters');
-	fig.Position(3)= 8.5;
+	% fig.Position(3)= 8.5;
+	fig.Position(3)= 8.9;
 	fig.Position(4) = 9.5;
 	figh = fig.Position(4);
 
@@ -93,7 +94,7 @@ function simulateDIICN(dataPath)
 	L=labelpanel(0.35,0.555,'c');
 		annotation('textbox',[0.35+0.05,0.57,0.25,0.03], 'String',{'Nav1.4 model'}, 'LineStyle','none', 'FontWeight','normal', 'FontSize',7,'Margin',0);
 	L=labelpanel(0.665,0.555,'d');
-		annotation('textbox',[0.67+0.05,0.57,0.25,0.03], 'String',{'Low CSI model'}, 'LineStyle','none', 'FontWeight','normal', 'FontSize',7,'Margin',0);
+		annotation('textbox',[0.67+0.05,0.57,0.25,0.03], 'String',{'Nav1.5 (low CSI)'}, 'LineStyle','none', 'FontWeight','normal', 'FontSize',7,'Margin',0);
 
 
 function simulateDIVCN(dataPath)
@@ -108,7 +109,7 @@ function simulateDIVCN(dataPath)
 	load(fullfile(dataPath,'Nav15ParsNB'));
 	parsNav15 = Params;
 	ax = axes('Units','centimeters');
-	ax.Position = [-0.2+4.4/3,figh-9,2.25,1.75];
+	ax.Position = [-0.2+0.125+0.5,figh-9,2.25,1.75];
 		plotComparison(parsNav15,@nav15_NB,clrs(1,:),'square'); 
 		parsNav15(1) = parsNav15(1)*20;
 		parsNav15(2) = parsNav15(2)*20;
@@ -128,12 +129,36 @@ function simulateDIVCN(dataPath)
 		set(gca,'fontsize',7);
 
 	% Low CSI Model
+	load(fullfile(dataPath,'Nav14ParsMGO'));
+	parsNav14 = Params;
+	ax = axes('Units','centimeters');
+	ax.Position = [-0.2+0.125+3.25,figh-9,2.25,1.75];
+		plotComparison(parsNav14,@nav14_MGO,clrs(1,:),'square'); 
+		% plotComparison(parsNav15,@nav15_NB,clrs(1,:),'square'); 
+		parsNav14(1) = parsNav14(1)*20;
+		parsNav14(2) = parsNav14(2)*20;
+		parsNav14(7) = parsNav14(7)/20;
+		parsNav14(8) = parsNav14(8)/20;
+		plotComparison(parsNav14,@nav14_MGO,clrs(2,:),'v'); 
+		% plotComparison(parsNav15,@nav15_NB,clrs(2,:),'v');
+		xlim([-140,30]); ylim([0,1]); ylabel(''); box off; set(gca,'tickdir','out')
+		set(get(gca,'yaxis'),'visible','off');
+		ch = get(gca,'Children');
+		for i = 1:length(ch)
+			ch(i).MarkerSize=3;
+			ch(i).LineWidth=0.75;
+		end
+		set(gca,'xtick',[-100:50:0]);
+		set(gca,'xticklabel',{'-100','-50','0 mV'});
+		set(gca,'tickdir','out')
+		set(gca,'fontsize',7);
+
 	load(fullfile(dataPath,'Nav15ParsNB'));
 	parsNav15 = Params;
 	parsNav15(1) = parsNav15(1)*0.01;
 	parsNav15(2) = parsNav15(2)*100;
 	ax = axes('Units','centimeters');
-	ax.Position = [-0.2+8.9-4.4/3-2.25,figh-9,2.25,1.75];
+	ax.Position = [-0.2+0.125+6,figh-9,2.25,1.75];
 		plotComparison(parsNav15,@nav15_NB,clrs(1,:),'square'); 
 		parsNav15(1) = parsNav15(1)*20;
 		parsNav15(2) = parsNav15(2)*20;
@@ -153,11 +178,12 @@ function simulateDIVCN(dataPath)
 		set(gca,'fontsize',7);
 
 
-	L=labelpanel(0.125,0.24,'e');
-		annotation('textbox',[0.125+0.05,0.255,0.25,0.03], 'String',{'Nav1.5 model'}, 'LineStyle','none', 'FontWeight','normal', 'FontSize',7,'Margin',0);
-	L=labelpanel(0.55,0.24,'f');
-		annotation('textbox',[0.55+0.05,0.255,0.25,0.03], 'String',{'Low CSI model'}, 'LineStyle','none', 'FontWeight','normal', 'FontSize',7,'Margin',0);
-
+	L=labelpanel(0.04,0.24,'e');
+		annotation('textbox',[0.04+0.05,0.255,0.25,0.03], 'String',{'Nav1.5 model'}, 'LineStyle','none', 'FontWeight','normal', 'FontSize',7,'Margin',0);
+	L=labelpanel(0.35,0.24,'f');
+		annotation('textbox',[0.35+0.05,0.255,0.25,0.03], 'String',{'Nav1.4 model'}, 'LineStyle','none', 'FontWeight','normal', 'FontSize',7,'Margin',0);
+	L=labelpanel(0.665,0.24,'g');
+		annotation('textbox',[0.67+0.05,0.255,0.25,0.03], 'String',{'Nav1.5 (low CSI)'}, 'LineStyle','none', 'FontWeight','normal', 'FontSize',7,'Margin',0);
 
 
 function plotComparison(params,modelfunction,clr,markerType)

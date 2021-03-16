@@ -359,6 +359,8 @@ function plotcsidata(dataPath)
 	Y = [total15;total14;total16];
 	G = [ones(size(total15));2*ones(size(total14));3*ones(size(total16))];
 	[p,tbl,stats] = anova1(Y,G,'off');
+	k = length(unique(G))
+	df = length(G)-k
 	c = multcompare(stats,'display','off')
 	c(2:3,end)
 

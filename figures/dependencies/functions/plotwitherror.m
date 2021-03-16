@@ -8,9 +8,9 @@ function h =plotwitherror(x,y,isstdrr,varargin)
 	else
 		ymu = nanmedian(y,2);
 		ylo = quantile(y,0.05,2);
-		% ylo = quantile(y,0.75,2);
+		% ylo = quantile(y,0.40,2);
 		yhi = quantile(y,0.95,2);
-		% yhi = quantile(y,0.25,2);
+		% yhi = quantile(y,0.60,2);
 	end
 
 	h = plot(x,ymu,varargin{:}); hold on;
@@ -24,9 +24,9 @@ function h =plotwitherror(x,y,isstdrr,varargin)
 	xfvec = [x,flip(x)];
 	yfvec = [ylo;flip(yhi)];
 	F = fill(xfvec(:),yfvec(:),'k');
-	if(isempty(F))
-		return;
-	end
+	% if(isempty(F))
+	% 	return;
+	% end
 	F.FaceAlpha = 0.2;
 	F.FaceColor = h.Color;
 	F.EdgeColor = 'none';
